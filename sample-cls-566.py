@@ -107,7 +107,7 @@ def imshow(a, format='png', jpeg_fallback=True, save_dir_id=None, iter_img=None,
   img = PIL.Image.fromarray(a)
   img.save(str_file, format)
   if save_dir_id and iter_img and trunc:
-      par_path = f'/deep/group/sharonz/biggan/{save_dir_id}/{trunc}/'
+      par_path = f'results/{save_dir_id}/{trunc}/'
       os.makedirs(par_path, exist_ok=True)
       os.chdir(par_path)
       save_name = f'cls_{save_dir_id}_tr_{trunc}_i_{iter_img}.png'

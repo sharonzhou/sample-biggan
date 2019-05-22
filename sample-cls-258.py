@@ -107,7 +107,7 @@ def imshow(a, format='png', jpeg_fallback=True, save_dir_id=None, iter_img=None,
   img = PIL.Image.fromarray(a)
   img.save(str_file, format)
   if save_dir_id and iter_img and trunc:
-      par_path = f'/deep/group/sharonz/biggan/{save_dir_id}/{trunc}/'
+      par_path = f'/home/ec2-user/SageMaker/sample-biggan/results/{save_dir_id}/{trunc}/'
       os.makedirs(par_path, exist_ok=True)
       os.chdir(par_path)
       save_name = f'cls_{save_dir_id}_tr_{trunc}_i_{iter_img}.png'
@@ -133,10 +133,12 @@ ys = [258]
 truncations = [1.0, 0.5]
 num_samples = 1
 
-num_samples_per_class = 50000
+num_samples_per_class = 1300
 for truncation in truncations:
     for y in ys:
         for i in range(num_samples_per_class):
+            if i < 142:
+                continue
             z = truncated_z_sample(1, truncation)
             """
             y = 258 # samoyed - easy
